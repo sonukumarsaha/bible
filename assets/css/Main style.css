@@ -384,32 +384,6 @@ a {
   cursor: pointer;
 }
 
-.contact__social {
-  grid-template-columns: repeat(1, max-content);
-  justify-content: center;
-  column-gap: 3rem;
-}
-
-.contact__social-link {
-  color: var(--title-color);
-  display: inline-flex;
-  column-gap: .25rem;
-  align-items: center;
-  transition: color .4s;
-}
-
-.contact__social-link i {
-  font-size: 1.5rem;
-}
-
-.contact__social-link span {
-  font-size: var(--small-font-size);
-  font-weight: var(--font-semi-bold);
-}
-
-.contact__social-link:hover {
-  color: var(--first-color-light);
-}
 
 .contact__message {
   position: absolute;
@@ -605,12 +579,6 @@ iframe {
     column-gap: 3 rem;
   }
 
-
-  /* .footer__container {
-    padding-block: 3rem;
-    grid-template-columns: repeat(1, max-content);
-    justify-content: space-between;
-  } */
 
   .footer__links {
     column-gap: 4rem;
