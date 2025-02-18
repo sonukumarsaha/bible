@@ -1,0 +1,663 @@
+/*=============== GOOGLE FONTS ===============*/
+/* @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /* 
+        Change favorite color
+        Default: hsl(230, 55%, 55%)
+        Purple: hsl(245, 55%, 55%) - Blue: hsl(210, 55%, 55%)
+        Pink: hsl(340, 55%, 55%) - Green: hsl(162, 55%, 55%)
+        Orange: hsl(14, 55%, 55%)
+
+        For more colors visit: https://colors.dopely.top/color-pedia
+        -> Choose any color 
+        -> Click on tab (Color Conversion)
+        -> Copy the color mode (HSL)
+  */
+  --hue: 210;
+  --first-color: hsl(var(--hue), 55%, 55%);
+  --first-color-light: hsl(var(--hue), 55%, 65%);
+  --first-color-alt: hsl(var(--hue), 50%, 50%);
+  --title-color: hsl(var(--hue), 30%, 95%);
+  --text-color: hsl(var(--hue), 20%, 80%);
+  --text-color-light: hsl(var(--hue), 20%, 70%);
+  --body-color: hsl(var(--hue), 40%, 16%);
+  --container-color: hsl(var(--hue), 40%, 20%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Noto Sans Devanagari", serif;
+  --biggest-font-size: 3rem;
+  --big-font-size: 1.5rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 5.5rem;
+    --big-font-size: 2.75rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1.125rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+input,
+button,
+textarea {
+  border: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+p {
+  line-height: 200%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.gridlist {
+  align-content: center;
+}
+
+.section {
+  padding-block: 5rem 2rem;
+}
+
+.section__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  margin-bottom: 2rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+
+/* WELCOME MESSAGE */
+
+#signature {
+  margin-top: 30px;
+  text-align: left;
+}
+
+#disclaimer {
+  text-align: justify;
+}
+
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+.nav__toggle,
+.nav__close {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+/* Navigation for mobile devices */
+
+@media screen and (max-width: 1150px) {
+  .nav__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: hsla(var(--hue), 70%, 4%, .2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 80%;
+    height: 100%;
+    padding: 7rem 3rem;
+    transition: right .4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link {
+  position: relative;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color .4s;
+}
+
+.nav__link::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: var(--first-color-light);
+  position: absolute;
+  left: 0;
+  bottom: -.5rem;
+  transition: width .3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color-light);
+
+}
+
+.nav__link:hover::after {
+  width: 30%;
+
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+
+/* Show menu */
+.show-menu {
+  right: 0;
+}
+
+/* Add blur header */
+.blur-header::after {
+  content: '';
+  position: absolute;
+  width: 1000%;
+  height: 100%;
+  background-color: hsla(var(--hue), 70%, 4%, .2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+
+}
+
+
+/* Active link */
+.active-link {
+  color: var(--first-color-light);
+}
+
+.active-link::after {
+  width: 30%;
+}
+
+
+/* Animate scroll icon */
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(.6rem);
+    opacity: 0;
+  }
+}
+
+/*=============== BUTTON ===============*/
+.button {
+  display: inline-flex;
+  justify-content: center;
+  background-color: var(--first-color);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  padding: 1.25rem 2rem;
+  transition: background-color .4s;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+
+
+/*=============== BIBLICAL COMMENTARIES TOPICS ===============*/
+
+.Commentaries__container {
+  text-align: justify;
+  row-gap: 3rem;
+}
+
+.Commentaries__title {
+  position: relative;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.Commentaries__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -.5rem;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-color);
+
+}
+
+
+/*=============== FOR WHITE SPACES ===============*/
+
+.newline {
+  white-space: pre-line;
+}
+
+
+/*=============== CONTACT ===============*/
+
+.contact__container {
+  row-gap: 4rem;
+}
+
+.contact__group,
+.contact__form {
+  gap: 1rem;
+}
+
+.contact__form {
+  position: relative;
+}
+
+.contact__input {
+  padding: 1.25rem;
+  background-color: var(--container-color);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.contact__input::placeholder {
+  color: var(--text-color-light);
+}
+
+.contact__area {
+  height: 10rem;
+  resize: none;
+}
+
+.contact__button {
+
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.contact__social {
+  grid-template-columns: repeat(1, max-content);
+  justify-content: center;
+  column-gap: 3rem;
+}
+
+.contact__social-link {
+  color: var(--title-color);
+  display: inline-flex;
+  column-gap: .25rem;
+  align-items: center;
+  transition: color .4s;
+}
+
+.contact__social-link i {
+  font-size: 1.5rem;
+}
+
+.contact__social-link span {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.contact__social-link:hover {
+  color: var(--first-color-light);
+}
+
+.contact__message {
+  position: absolute;
+  left: 0;
+  bottom: -2rem;
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  display: none;
+}
+
+/*=============== FOOTER ===============*/
+
+.footer {
+  background-color: var(--container-color);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.footer__copy {
+  text-align: center;
+  color: var(--text-color-light);
+  font-size: x-small;
+}
+
+#footer_iframe {
+  position: fixed;
+  bottom: 0;
+}
+
+iframe {
+  width: 100%;
+  height: 30px;
+}
+
+/*=============== SCROLL BAR ===============*/
+
+::-webkit-scrollbar {
+  width: .6rem;
+  background-color: hsl(var(--hue), 20%, 20%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--hue), 20%, 30%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--hue), 20%, 40%);
+}
+
+
+/*=============== SCROLL UP ===============*/
+.scrollup {
+  position: fixed;
+  right: 1rem;
+  bottom: -50%;
+  background-color: var(--container-color);
+  display: inline-flex;
+  padding: 6px;
+  color: var(--title-color);
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px hsla(var(--hue), 30%, 8%, .3);
+  z-index: var(--z-tooltip);
+  transition: bottom .4s, transform .4s;
+}
+
+.scrollup:hover {
+  transform: translateY(-.5rem);
+}
+
+/* Show Scroll Up */
+.show-scroll {
+  bottom: 5rem;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+
+
+
+
+/* For small devices */
+@media screen and (max-width:300px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .categories__content {
+    grid-template-columns: repeat(1, max-content);
+  }
+
+}
+
+
+/* For medium devices */
+@media screen and (min-width:540px) {
+
+  .Commentaries__container,
+  .contact__container,
+  .footer__container {
+    grid-template-columns: 350px;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (min-width:768px) {
+  .nav__menu {
+    width: 50%;
+  }
+
+  .Commentaries__container {
+    grid-template-columns: initial;
+    text-align: justify;
+  }
+
+  .categories__content {
+    grid-template-columns: repeat(1, max-content);
+    justify-content: initial;
+    column-gap: 4rem;
+
+  }
+
+}
+
+
+/* For large devices */
+
+@media screen and (min-width:1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: 7rem 5rem;
+  }
+
+  .section__title {
+    margin-bottom: 4rem;
+  }
+
+  .nav__toggle,
+  .nav__close {
+    display: none;
+  }
+
+  .nav__menu {
+    width: initial;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    column-gap: 4rem;
+  }
+
+  .Commentaries__container {
+    text-align: justify;
+    row-gap: 4rem;
+  }
+
+  .Commentaries__title {
+    font-size: var(--normal-font-size);
+    margin-bottom: 3.5rem;
+  }
+
+  .contact__container {
+    grid-template-columns: 580px;
+  }
+
+  .contact__group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__area {
+    height: 15rem;
+  }
+
+  .contact__button {
+    width: max-content;
+    justify-self: center;
+    margin-top: 1.5rem;
+  }
+
+  .contact__message {
+    bottom: 4.5rem;
+  }
+
+  .contact__social {
+    grid-template-columns: repeat(1, max-content);
+    column-gap: 3 rem;
+  }
+
+
+  /* .footer__container {
+    padding-block: 3rem;
+    grid-template-columns: repeat(1, max-content);
+    justify-content: space-between;
+  } */
+
+  .footer__links {
+    column-gap: 4rem;
+    order: 1;
+  }
+
+
+  .scrollup {
+    right: 3rem;
+  }
+}
+
+
+
+/* Table Data */
+table {
+  width: auto;
+  max-width: 100%;
+  margin: auto;
+}
+
+th,
+td {
+  border: none;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--container-color);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.topicshower {
+  display: gridlist;
+  place-items: center;
+  transition: transform .4s;
+}
+
+.topicshower:hover {
+  transform: translateY(-.25rem);
+}
+
+.notification {
+  font-size: xx-small;
+  color: var(--text-color-light);
+  margin-bottom: 20px;
+  text-align: center;
+}
