@@ -2,8 +2,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"); */
 /* @import url('https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@100..900&display=swap');
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
@@ -33,7 +32,7 @@
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Tiro Devanagari Hindi", serif;
+  --body-font: "Noto Serif Devanagari", serif;
   --biggest-font-size: 3rem;
   --big-font-size: 1.5rem;
   --h1-font-size: 1.5rem;
