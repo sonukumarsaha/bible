@@ -625,7 +625,7 @@ th {
 }
 
 .notification {
-  font-size: xx-small;
+  font-size: smaller;
   color: var(--text-color-light);
   margin-bottom: 20px;
   text-align: center;
